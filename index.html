@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Collection App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-film"></i> Movie Collection</h1>
+            <p class="subtitle">Add and manage your favorite movies</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add Movie Form -->
+            <section class="add-movie-section">
+                <h2><i class="fas fa-plus-circle"></i> Add New Movie</h2>
+                <div class="form-container">
+                    <form id="addMovieForm">
+                        <div class="form-group">
+                            <label for="title"><i class="fas fa-heading"></i> Movie Title *</label>
+                            <input type="text" id="title" name="title" required placeholder="Enter movie title">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="year"><i class="fas fa-calendar-alt"></i> Release Year *</label>
+                                <input type="number" id="year" name="year" required min="1900" max="2024" placeholder="2024">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="genre"><i class="fas fa-tags"></i> Genre *</label>
+                                <select id="genre" name="genre" required>
+                                    <option value="">Select genre</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Adventure">Adventure</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Sci-Fi">Sci-Fi</option>
+                                    <option value="Thriller">Thriller</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Fantasy">Fantasy</option>
+                                    <option value="Animation">Animation</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="director"><i class="fas fa-user"></i> Director</label>
+                            <input type="text" id="director" name="director" placeholder="Enter director's name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description"><i class="fas fa-align-left"></i> Description</label>
+                            <textarea id="description" name="description" rows="3" placeholder="Enter movie description..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rating"><i class="fas fa-star"></i> Your Rating (1-10)</label>
+                            <div class="rating-input">
+                                <input type="range" id="rating" name="rating" min="1" max="10" value="5">
+                                <span class="rating-value">5</span>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-plus"></i> Add Movie
+                        </button>
+                        <button type="button" id="resetBtn" class="reset-btn">
+                            <i class="fas fa-redo"></i> Reset Form
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Movies List -->
+            <section class="movies-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Movie Collection</h2>
+                    <div class="stats">
+                        <span id="movieCount">0 movies</span>
+                        <button id="refreshBtn" class="refresh-btn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="movies-container">
+                    <div id="loading" class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading movies...
+                    </div>
+                    <div id="moviesList" class="movies-grid"></div>
+                    <div id="noMovies" class="no-movies" style="display: none;">
+                        <i class="fas fa-film fa-3x"></i>
+                        <h3>No movies yet</h3>
+                        <p>Add your first movie using the form above!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Movie Collection App &copy; 2024 | API: <span id="apiStatus" class="api-status offline">Checking...</span></p>
+        </footer>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
